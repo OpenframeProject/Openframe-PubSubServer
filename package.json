@@ -1,0 +1,17 @@
+{
+  "name": "openframe-pubsub",
+  "version": "0.1.0",
+  "description": "Openframe's global PubSub event system.",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "openframe"
+  ],
+  "author": "Jonathan Wohl <jon@jonwohl.com>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "faye": "^1.1.2"
+  }
+}

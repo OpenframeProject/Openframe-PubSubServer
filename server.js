@@ -14,8 +14,8 @@ bayeux.on('handshake', function(clientId) {
 });
 
 bayeux.attach(server);
-server.listen(8000);
+server.listen(8889);
 
-bayeux.getClient().subscribe('/frame/updated/*', function(data) {
-    console.log(data);
-});
+// bayeux.getClient().subscribe('/frame/updated/*', function(data) {
+//     console.log(data);
+// });

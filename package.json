@@ -1,5 +1,5 @@
 {
-  "name": "openframe-pubsub",
+  "name": "openframe-pubsubserver",
   "version": "0.1.0",
   "description": "Openframe's global PubSub event system.",
   "main": "server.js",

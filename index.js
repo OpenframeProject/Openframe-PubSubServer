@@ -2,7 +2,7 @@ var http = require('http'),
     faye = require('faye');
 
 var server = http.createServer(),
-    bayeux = new faye.NodeAdapter({mount: '/faye', timeout: 45});
+    bayeux = new faye.NodeAdapter({mount: '/faye', timeout: 5});
 
 /**
  * Handle new client connection
@@ -11,6 +11,10 @@ var server = http.createServer(),
  */
 bayeux.on('handshake', function(clientId) {
     console.log('new bayeux connection: ', clientId);
+});
+
+bayeux.on('disconnect', function(clientId) {
+    console.log('bayeux connection closed: ', clientId);
 });
 
 bayeux.attach(server);

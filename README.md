@@ -53,6 +53,8 @@ payload: frame_id
 
 ## Proposed (not implemented)
 
-#### /user/loggedin/{user_name}
+#### /user/loggedin
+payload: user_name
 
-#### /user/loggedout/{user_name}
+#### /user/loggedout
+payload: user_name

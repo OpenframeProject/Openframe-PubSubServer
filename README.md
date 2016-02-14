@@ -3,7 +3,7 @@ A central publish-subscribe event bus and real-time message broker for Openframe
 
 This repo represents the **Global Event Bus (pubsub)** in the following diagram. It is designed to run as an independent service (optionally on an independent box) from the API Server.
 
-![alt tag](https://raw.github.com/OpenframeProject/Openframe-APIServer/master/docs/img/API Diagram.jpg)
+![alt tag](https://raw.github.com/OpenframeProject/Openframe-API/restify/docs/img/API Diagram.jpg)
 
 ## Overview
 

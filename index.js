@@ -32,7 +32,7 @@ pubsub.start = function(port) {
     bayeux.on('disconnect', function(clientId) {
         debug('bayeux connection closed: ', clientId);
         if (pubsub.connectedFrames[clientId]) {
-            bayeux.getClient().publish('/frame/disconnected', frame_id);
+            bayeux.getClient().publish('/frame/disconnected', pubsub.connectedFrames[clientId]);
         }
     });
 

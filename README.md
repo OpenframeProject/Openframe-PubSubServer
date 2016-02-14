@@ -35,16 +35,18 @@ var pubsubServer = require('openframe-pubsubserver');
 // defaults to port 8889
 pubsubServer.start();
 
-// alternatively, pass a port into the start method:
+// or pass a port into the start method:
 // pubsubServer.start(1234);
 
 ```
 
 ## Built-in System Events (WIP)
 
-#### /frame/connected/{frame_id}
+#### /frame/connected
+payload: frame_id
 
-#### /frame/disconnected/{frame_id}
+#### /frame/disconnected
+payload: frame_id
 
 #### /frame/updated/{frame_id}
 

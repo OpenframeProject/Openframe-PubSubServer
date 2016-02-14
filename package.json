@@ -2,17 +2,38 @@
   "name": "openframe-pubsubserver",
   "version": "0.1.0",
   "description": "Openframe's global PubSub event system.",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "node start",
     "test": "npm test"
+  },
+  "author": {
+    "name": "Jonathan Wohl",
+    "url": "http://jonathanwohl.com"
+  },
+  "contributors": [
+    {
+      "name": "Jonathan Wohl",
+      "url": "http://jonathanwohl.com"
+    },
+    {
+      "name": "Ishac Bertran",
+      "url": "http://ishacbertran.com"
+    }
+  ],
+  "license": "GPL-3.0",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "faye": "^1.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^2.0.0"
   },
   "keywords": [
     "openframe"
   ],
-  "author": "Jonathan Wohl <jon@jonwohl.com>",
-  "license": "GPL-3.0",
-  "dependencies": {
-    "faye": "^1.1.2"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenframeProject/Openframe-APIServer"
   }
 }

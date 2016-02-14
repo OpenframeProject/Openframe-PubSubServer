@@ -18,7 +18,12 @@ As it is a Faye server, clients can connect using the Faye client.
 To start up the server from the command line:
 
 ```bash
+
 $ npm start
+
+# to see debug output
+$ DEBUG=pubsub npm start
+
 ```
 
 Or programmatically:

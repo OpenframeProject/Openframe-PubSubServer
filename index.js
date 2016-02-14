@@ -39,7 +39,6 @@ pubsub.start = function(port) {
     // monitor all publish events. if we get an event on /frame/connected,
     // add it to the list of connected frames
     bayeux.on('publish', function(clientId, channel, data) {
-        debug('publish event:', clientId, channel, data);
         if (channel === '/frame/connected') {
             debug('heard /frame/connected event');
             pubsub.connectedFrames[clientId] = data;

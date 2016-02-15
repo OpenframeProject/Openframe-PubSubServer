@@ -5,7 +5,7 @@
 
 var http = require('http'),
     faye = require('faye'),
-    debug = require('debug')('pubsub');
+    debug = require('debug')('openframe:pubsub');
 
     // Exported object
     pubsub = module.exports = {};

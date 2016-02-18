@@ -5,17 +5,16 @@
 
 var http = require('http'),
     faye = require('faye'),
-    debug = require('debug')('openframe:pubsub');
+    debug = require('debug')('openframe:pubsub'),
 
     // Exported object
     pubsub = module.exports = {};
 
 pubsub.connectedFrames = {};
 
-pubsub.start = function(port) {
-    port = port || '8889';
-
-    var server = http.createServer(),
+pubsub.start = function(_port) {
+    var port = _port || '8889',
+        server = http.createServer(),
         bayeux = new faye.NodeAdapter({mount: '/faye', timeout: 5});
 
     /**
@@ -58,4 +57,4 @@ pubsub.start = function(port) {
         debug('/frame/disconnected', data);
     });
 
-}
+};

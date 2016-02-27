@@ -5,6 +5,8 @@
 
 var http = require('http'),
     faye = require('faye'),
+    server_auth = require('./server-auth'),
+    client_auth = require('./client-auth'),
     debug = require('debug')('openframe:pubsub'),
 
     // Exported object
@@ -12,15 +14,28 @@ var http = require('http'),
 
 pubsub.connectedFrames = {};
 
-pubsub.start = function(_port) {
-    var port = _port || '8889',
+pubsub.start = function() {
+    var port = process.env.PS_PORT || '8889',
+        host = process.env.PS_HOST || '0.0.0.0',
+        path = process.env.PS_PATH || '/faye',
+        api_protocol = process.env.PROTOCOL || 'http',
+        api_port = process.env.PORT || '8888',
+        api_host = process.env.HOST || '0.0.0.0',
+        api_url = api_protocol + '://' + api_host + ':' + api_port + '/api',
+
         server = http.createServer(),
-        bayeux = new faye.NodeAdapter({mount: '/faye', timeout: 5});
+        bayeux = new faye.NodeAdapter({mount: path, timeout: 5}),
+        client = bayeux.getClient();
+
+
+    // add server_auth extension
+    bayeux.addExtension(server_auth(api_url));
+
+    // add client_auth extenstion
+    client.addExtension(client_auth());
 
     /**
      * Handle new client connection
-     * @param  {[type]} clientId) {}          [description]
-     * @return {[type]}           [description]
      */
     bayeux.on('handshake', function(clientId) {
         debug('new bayeux connection: ', clientId);
@@ -31,7 +46,7 @@ pubsub.start = function(_port) {
     bayeux.on('disconnect', function(clientId) {
         debug('bayeux connection closed: ', clientId);
         if (pubsub.connectedFrames[clientId]) {
-            bayeux.getClient().publish('/frame/disconnected', pubsub.connectedFrames[clientId]);
+            client.publish('/frame/disconnected', pubsub.connectedFrames[clientId]);
         }
     });
 
@@ -45,15 +60,16 @@ pubsub.start = function(_port) {
     });
 
     bayeux.attach(server);
-    server.listen(port);
+    server.listen(port, host);
 
     // Just some logging...
     // TODO: log to file.
-    bayeux.getClient().subscribe('/frame/connected', function(data) {
+
+    client.subscribe('/frame/connected', function(data) {
         debug('/frame/connected', data);
     });
 
-    bayeux.getClient().subscribe('/frame/disconnected', function(data) {
+    client.subscribe('/frame/disconnected', function(data) {
         debug('/frame/disconnected', data);
     });
 

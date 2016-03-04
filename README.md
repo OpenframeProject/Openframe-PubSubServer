@@ -48,13 +48,17 @@ payload: frame_id
 #### /frame/disconnected
 payload: frame_id
 
-#### /frame/updated/{frame_id}
+#### /frame/{frame_id}/connected
+payload: frame model
 
+#### /frame/{frame_id}/disconnected
+payload: frame_id
 
-## Proposed (not implemented)
+#### /frame/{frame_id}/db_updated
+payload: frame model
 
-#### /user/loggedin
-payload: user_name
+#### /frame/{frame_id}/frame_updating
+payload: frame_id
 
-#### /user/loggedout
-payload: user_name
+#### /frame/{frame_id}/frame_updated
+payload: frame_id

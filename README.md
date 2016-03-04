@@ -62,3 +62,11 @@ payload: frame_id
 
 #### /frame/{frame_id}/frame_updated
 payload: frame_id
+
+## Proposed
+
+#### /frame/{frame_id}/display_on
+payload: frame_id
+
+#### /frame/{frame_id}/display_off
+payload: frame_id

@@ -1,6 +1,6 @@
 {
   "name": "openframe-pubsubserver",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Openframe's global PubSub event system.",
   "main": "index.js",
   "scripts": {

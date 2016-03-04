@@ -49,13 +49,13 @@ payload: frame_id
 payload: frame_id
 
 #### /frame/{frame_id}/connected
-payload: frame model
+payload: frame_id
 
 #### /frame/{frame_id}/disconnected
 payload: frame_id
 
 #### /frame/{frame_id}/db_updated
-payload: frame model
+payload: frame instance
 
 #### /frame/{frame_id}/frame_updating
 payload: frame_id

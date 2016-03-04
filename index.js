@@ -46,16 +46,25 @@ pubsub.start = function() {
     bayeux.on('disconnect', function(clientId) {
         debug('bayeux connection closed: ', clientId);
         if (pubsub.connectedFrames[clientId]) {
-            client.publish('/frame/disconnected', pubsub.connectedFrames[clientId]);
+            var frame_id = pubsub.connectedFrames[clientId];
+            client.publish('/frame/disconnected', frame_id);
+
+            // publish to frame-specific channel
+            client.publish('/frame/' + frame_id + '/disconnected', frame_id);
         }
     });
 
     // monitor all publish events. if we get an event on /frame/connected,
     // add it to the list of connected frames
+    //
+    // also re-publish frame_id-namespaced  connect event
     bayeux.on('publish', function(clientId, channel, data) {
+        debug('published', channel, data);
         if (channel === '/frame/connected') {
-            debug('heard /frame/connected event');
             pubsub.connectedFrames[clientId] = data;
+
+            // publish to frame-specific channel
+            client.publish('/frame/' + data + '/connected', data);
         }
     });
 

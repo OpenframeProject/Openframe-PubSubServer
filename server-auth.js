@@ -39,19 +39,6 @@ module.exports = function(api_url) {
                 message.error = 'Invalid access token';
                 callback(message);
             });
-            // // Find the right token for the channel
-            // this._fileContent = this._fileContent || fs.readFileSync('./tokens.json');
-
-            // var registry = JSON.parse(this._fileContent.toString()),
-            //     token = registry[subscription];
-
-            // // Add an error if the tokens don't match
-            // if (token !== msgToken) {
-            //     message.error = 'Invalid subscription auth token';
-            // }
-
-            // // Call the server back now we're done
-            // callback(message);
         }
     };
 };

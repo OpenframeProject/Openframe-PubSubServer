@@ -15,7 +15,6 @@ module.exports = function(api_url) {
                     debug(error);
                     reject();
                 } else {
-                    debug(body);
                     resolve();
                 }
             });

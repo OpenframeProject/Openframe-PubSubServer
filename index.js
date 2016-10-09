@@ -14,15 +14,11 @@ var http = require('http'),
 
 pubsub.connectedFrames = {};
 
-pubsub.start = function() {
-    var port = process.env.PS_PORT || '8889',
-        host = process.env.PS_HOST || '0.0.0.0',
+pubsub.start = function(_port, _host) {
+    var port = _port || process.env.PS_PORT || '8889',
+        host = _host || process.env.PS_HOST || '0.0.0.0',
         path = process.env.PS_PATH || '/faye',
-        api_protocol = process.env.PROTOCOL || 'http',
-        api_port = process.env.PORT || '8888',
-        api_host = process.env.HOST || '0.0.0.0',
-        api_url = api_protocol + '://' + api_host + ':' + api_port + '/api',
-
+        api_url = process.env.API_EXPOSED_URL || 'http://0.0.0.0:8888/api',
         server = http.createServer(),
         bayeux = new faye.NodeAdapter({mount: path, timeout: 5}),
         client = bayeux.getClient();
